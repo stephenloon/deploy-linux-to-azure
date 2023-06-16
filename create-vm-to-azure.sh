@@ -40,3 +40,5 @@ fi
 public_ip=$(az vm show --show-details --resource-group $RESOURCE_GROUP_NAME --name $VM_NAME --query publicIps --output tsv)
 
 echo $public_ip > pub-ip.txt
+
+#test
