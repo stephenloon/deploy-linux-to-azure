@@ -1,0 +1,22 @@
+# Must have public address of VM
+
+# create custom ssh key
+
+ssh-keygen -b 4096
+
+# at default on Linux the private/public key are in ~/.ssh/
+# id_rsa and id_rsa.pub are the default keys
+# specify a custom key by inputting the path/name of new key when prompted to save keys ie. /~/.ssh/newkeyname
+# setting a passphrase is recommeneded
+
+# copy new ssh key to destination server
+# make VM is powered on
+
+az vm start --resource-group $RESOURCE_GROUP_NAME --name $VM_NAME
+# variables can be replaced with actual name if variables have not been exported
+
+ssh-copy-id -i ~/.ssh/az_id.pub vmusername@publicipaddr
+# copies custom public key to Azure
+
+#connect to VM via ssh
+ ssh -i ~/.ssh/customprivatekey vmusername@publicipaddr
