@@ -52,11 +52,7 @@ do
     esac
 done
 
-# Define the Functions
-install_apache
-install_mysql
-install_php
-restart_apache
+
 
 
 
