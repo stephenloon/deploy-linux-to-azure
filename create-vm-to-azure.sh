@@ -5,7 +5,7 @@
 RESOURCE_GROUP_NAME=rg1
 LOCATION=westus
 VM_NAME=ubuntu-vm
-VM_IMAGE=debian
+VM_IMAGE=ubuntu2204
 ADMIN_USERNAME=azadmin
 
 
