@@ -36,6 +36,7 @@ else
 fi
 
 # Export public IP to .txt file to connect to VM via SSH
+# txt file is saved to the home directory
 
 public_ip=$(az vm show --show-details --resource-group $RESOURCE_GROUP_NAME --name $VM_NAME --query publicIps --output tsv)
 
