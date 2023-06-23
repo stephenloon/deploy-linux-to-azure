@@ -16,8 +16,6 @@ install_apache() {
 
 install_mysql() {
     sudo apt install mysql-server -y
-    read -s -p "Set the root password for MySQL server: "
-    sudo mysql-e " ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by '$mysql_password'"
     sudo mysql_secure_installation
 }
 
