@@ -16,7 +16,17 @@ install_apache() {
 
 install_mysql() {
     sudo apt install mysql-server -y
+}
+
+install_mysql_secure() {
     sudo mysql_secure_installation
+
+    # if you get this error " Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost...."
+    # exit the set up
+    # enter "sudo mysql"
+    # enter this: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'new_password';
+    # enter desired password in 'new_password'
+    # follow the prompts after
 }
 
 install_php() {
@@ -35,17 +45,19 @@ echo "LAMP Stack Installation"
 
 while true;
 do
-    read -p "Select an option: [1] Apache [2] MySQL [3] PHP [4] Restart Apache [5] Quit: " choice
+    read -p "Select an option: [1] Apache [2] MySQL [3] MySQL Secure [4] PHP [5] Restart Apache [6] Quit: " choice
     case $choice in
         1) install_apache;;
 
         2) install_mysql;;
 
-        3) install_php;;
+        3) install_mysql_secure;;
 
-        4) restart_apache;;
+        4) install_php;;
 
-        5) echo "Quitting..."
+        5) restart_apache;;
+
+        6) echo "Quitting..."
             break;;
         *) echo "Invalid option. Please select something else";;
 
