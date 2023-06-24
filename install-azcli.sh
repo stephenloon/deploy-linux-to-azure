@@ -14,28 +14,23 @@ fi
 
 # Checks to see if the "az" is not installed. If not, it will install Azure CLI.
 
-if [ ! command -v az &>/dev/null ]; 
-# adding ! will do the opposite of the command
+if command -v az &>/dev/null; 
 then
-    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    echo "Azure CLI is already installed"
+else
     echo "Azure CLI is not installed!" 
     echo "Installing Azure CLI...."
-
-else 
-    echo "Azure CLI is already installed"
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 fi
 
-# Checks if you are logged into the Azure portal already. If not it will log you in
-# A web browser will pop up to enter Azure credentials
+# A web browser will open and enter your Azure credentials. If credentials fail, it will print that out.
 
-if [[ $(az account show 2>/dev/null) ]];
-then
-    echo "You're already logged in"
-else
+az login
 
-    az login 
+if [ $? -eq 0 ]; then
     echo "You're logged in!"
-
+else
+    echo "Login failed. Please check your credentials and try again."
 fi
 
